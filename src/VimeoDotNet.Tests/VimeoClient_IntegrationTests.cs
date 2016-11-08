@@ -21,6 +21,7 @@ namespace VimeoDotNet.Tests
 		// http://download.wavetlan.com/SVV/Media/HTTP/http-mp4.htm
 
 		private const string TESTTEXTTRACKFILEPATH = @"Resources\test.vtt";
+		private const string TESTPICTUREFILEPATH = @"Resources\testpicture.jpg";
 
         public VimeoClient_IntegrationTests()
         {
@@ -402,6 +403,19 @@ namespace VimeoDotNet.Tests
 		}
 
 		[Fact]
+		public async Task Integration_VimeoClient_GetPicturesAsync()
+		{
+			// arrange
+			VimeoClient client = CreateAuthenticatedClient();
+
+			// act
+			var pictures = await client.GetPicturesAsync(vimeoSettings.VideoId);
+
+			// assert
+			pictures.ShouldNotBeNull();
+		}
+
+		[Fact]
 		public async Task Integration_VimeoClient_GetTextTracksAsync()
 		{
 			// arrange
@@ -502,6 +516,30 @@ namespace VimeoDotNet.Tests
 			}
 
 			original.active.ShouldEqual(final.active);
+		}
+
+		[Fact]
+		public async Task Integration_VimeoClient_UploadPictureFileAsync()
+		{
+			// arrange
+			VimeoClient client = CreateAuthenticatedClient();
+			Picture completedRequest;
+			using (var file = new BinaryContent(GetFullPath(TESTPICTUREFILEPATH)))
+			{
+				// act
+				completedRequest = await client.UploadPictureFileAsync(
+								file,
+								vimeoSettings.VideoId);
+			}
+
+			// assert
+			completedRequest.ShouldNotBeNull();
+			completedRequest.uri.ShouldNotBeNull();
+
+			// cleanup
+			var uri = completedRequest.uri;
+			var pictureId = System.Convert.ToInt64(uri.Substring(uri.LastIndexOf('/') + 1));
+			await client.DeletePictureAsync(vimeoSettings.VideoId, pictureId);
 		}
 
 		[Fact]
