@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="VimeoClient_RateLimit.cs" />
+    <Compile Include="VimeoClient_Pictures.cs" />
     <Compile Include="VimeoClient_TextTracks.cs" />
     <Compile Include="VimeoClient_Videos.cs" />
     <Compile Include="VimeoClient_Upload.cs" />
