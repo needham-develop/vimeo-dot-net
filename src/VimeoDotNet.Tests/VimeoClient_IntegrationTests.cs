@@ -519,6 +519,26 @@ namespace VimeoDotNet.Tests
 		}
 
 		[Fact]
+		public async Task Integration_VimeoClient_PrivacyDomainsAsync()
+		{
+			// arrange
+			VimeoClient client = CreateAuthenticatedClient();
+			var domain = "google.com";
+			await client.AddPrivacyDomainAsync(vimeoSettings.VideoId, domain);
+
+			Paginated<PrivacyDomain> completedRequest;
+			// act
+			completedRequest = await client.GetPrivacyDomainsAsync(vimeoSettings.VideoId);
+
+			// assert
+			completedRequest.ShouldNotBeNull();
+			completedRequest.data.Find(d => d.domain == domain).ShouldNotBeNull();
+
+			// cleanup
+			await client.DeletePrivacyDomainAsync(vimeoSettings.VideoId, domain);
+		}
+
+		[Fact]
 		public async Task Integration_VimeoClient_UploadPictureFileAsync()
 		{
 			// arrange

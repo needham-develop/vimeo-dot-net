@@ -252,13 +252,41 @@ namespace VimeoDotNet
         Task UpdateVideoMetadataAsync(long clipId, VideoUpdateMetadata metaData);
         #endregion
 
+        #region Privacy Domains
         /// <summary>
-        /// Update text track asynchronously
+        /// Get Privacy domain
+        /// </summary>
+        /// <param name="videoId">VideoId</param>
+        /// <returns></returns>
+        Task<Paginated<PrivacyDomain>> GetPrivacyDomainsAsync(long videoId);
+
+        /// <summary>
+        /// Add Pirvacy domain
+        /// </summary>
+        /// <param name="videoId">VideoId</param>
+        /// <param name="domain">domain</param>
+        /// <returns></returns>
+        Task AddPrivacyDomainAsync(long videoId, string domain);
+
+        /// <summary>
+        /// Delete Privacy domain
+        /// </summary>
+        /// <param name="videoId">VideoId</param>
+        /// <param name="domain">domain</param>
+        /// <returns></returns>
+        Task DeletePrivacyDomainAsync(long videoId, string domain);
+
+        #endregion
+
+        #region Embed Presets
+        /// <summary>
+        /// Update embed presets
         /// </summary>
         /// <param name="videoId">VideoId</param>
         /// <param name="embedPresetId">EmbedPresetId</param>
         /// <returns></returns>
         Task UpdateEmbedPresetAsync(long videoId, long embedPresetId);
+        #endregion
 
 
         #region Text tracks
