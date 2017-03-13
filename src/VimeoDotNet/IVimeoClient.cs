@@ -252,6 +252,15 @@ namespace VimeoDotNet
         Task UpdateVideoMetadataAsync(long clipId, VideoUpdateMetadata metaData);
         #endregion
 
+        /// <summary>
+        /// Update text track asynchronously
+        /// </summary>
+        /// <param name="videoId">VideoId</param>
+        /// <param name="embedPresetId">EmbedPresetId</param>
+        /// <returns></returns>
+        Task UpdateEmbedPresetAsync(long videoId, long embedPresetId);
+
+
         #region Text tracks
         /// <summary>
         /// Get text tracks asynchronously
@@ -294,6 +303,49 @@ namespace VimeoDotNet
         /// <param name="trackId">TrackId</param>
         /// <returns></returns>
         Task DeleteTextTrackAsync(long videoId, long trackId);
+        #endregion
+
+        #region Pictures
+        /// <summary>
+        /// Get Picturess asynchronously
+        /// </summary>
+        /// <param name="videoId">VideoId</param>
+        /// <returns>Paginated Pictures</returns>
+        ///
+        Task<Paginated<Picture>> GetPicturesAsync(long videoId);
+
+        /// <summary>
+        /// Get picture asynchronously
+        /// </summary>
+        /// <param name="videoId">VideoId</param>
+        /// <param name="pictureId">PictureId</param>
+        /// <returns>Picture</returns>
+        Task<Picture> GetPictureAsync(long videoId, long pictureId);
+
+        /// <summary>
+        /// Update picture asynchronously
+        /// </summary>
+        /// <param name="videoId">VideoId</param>
+        /// <param name="pictureId">PictureId</param>
+        /// <param name="active">Active</param>
+        /// <returns>Updated picture</returns>
+        Task<Picture> UpdatePictureAsync(long videoId, long pictureId, bool? active);
+
+        /// <summary>
+        /// Upload new picture file asynchronously
+        /// </summary>
+        /// <param name="fileContent">File content</param>
+        /// <param name="videoId">VideoId</param>
+        /// <returns>New picture</returns>
+        Task<Picture> UploadPictureFileAsync(IBinaryContent fileContent, long videoId);
+
+        /// <summary>
+        /// Delete picture asynchronously
+        /// </summary>
+        /// <param name="videoId">VideoId</param>
+        /// <param name="pictureId">PictureId</param>
+        /// <returns></returns>
+        Task DeletePictureAsync(long videoId, long pictureId);
         #endregion
 
         #region Uploading files
