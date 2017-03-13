@@ -83,6 +83,9 @@
 
         public const string EmbedPreset = "/videos/{clipId}/presets/{embedPresetId}";
 
+        public const string GetPrivacyDomains = "/videos/{clipId}/privacy/domains";
+        public const string UpdatePrivacyDomains = "/videos/{clipId}/privacy/domains/{domain}";
+
 
         public const string Pictures = "/videos/{clipId}/pictures/";
         public const string Picture = "/videos/{clipId}/pictures/{pictureId}";

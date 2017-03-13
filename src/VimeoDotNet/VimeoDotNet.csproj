@@ -62,6 +62,7 @@
     <Compile Include="Models\PresetLogos.cs" />
     <Compile Include="Models\PresetSettings.cs" />
     <Compile Include="Models\Size.cs" />
+    <Compile Include="Models\PrivacyDomain.cs" />
     <Compile Include="Models\TextTrack.cs" />
     <Compile Include="Models\TextTracks.cs" />
     <Compile Include="Models\VideoUpdateMetadata.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Net\IApiRequestFactory.cs" />
     <Compile Include="Net\IBinaryContent.cs" />
     <Compile Include="Net\IUploadRequest.cs" />
+    <Compile Include="VimeoClient_PrivacyDomains.cs" />
     <Compile Include="VimeoClient_Sync.cs" />
     <Compile Include="Enums\UploadStatusEnum.cs" />
     <Compile Include="Exceptions\VimeoUploadException.cs" />
